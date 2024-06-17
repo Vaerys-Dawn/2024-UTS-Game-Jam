@@ -38,23 +38,23 @@ MonoBehaviour:
   comboTime: 0.4
   maxCombo: 3
   damageTakenIFrames: 1
-  gravityStrength: -77.77777
-  gravityScale: 7.9284167
+  gravityStrength: -111.1111
+  gravityScale: 11.326309
   fallGravityMult: 1.5
   maxFallSpeed: 25
   fastFallGravityMult: 1
   maxFastFallSpeed: 30
-  runMaxSpeed: 11
-  runAcceleration: 2.5
-  runAccelAmount: 11.363636
-  runDecceleration: 5
-  runDeccelAmount: 22.727272
+  runMaxSpeed: 20
+  runAcceleration: 2
+  runAccelAmount: 5
+  runDecceleration: 2
+  runDeccelAmount: 5
   accelInAir: 0.65
   deccelInAir: 0.65
   doConserveMomentum: 1
-  jumpHeight: 3.5
+  jumpHeight: 5
   jumpTimeToApex: 0.3
-  jumpForce: 23.333332
+  jumpForce: 33.333332
   jumpCutGravityMult: 2
   jumpHangGravityMult: 0.5
   jumpHangTimeThreshold: 1
