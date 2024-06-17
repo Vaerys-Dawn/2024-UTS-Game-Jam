@@ -344,17 +344,19 @@ public class PlayerMovement : MonoBehaviour
 		#endregion
 
 		#region DASH CHECKS
-		if (!slideStuck && CanDash() && LastPressedDashTime > 0 && !IsWallClimbing && !IsWallJumping)
+		if (!slideStuck && CanDash() && LastPressedSlideTime > 0 && !IsWallClimbing && !IsWallJumping)
 		{
 			//Freeze game for split second. Adds juiciness and a bit of forgiveness over directional input
 			Sleep(Data.dashSleepTime);
 
 			//If not direction pressed, dash forward
 			if (_moveInput != Vector2.zero)
-				_lastDashDir = _moveInput;
+				_lastDashDir = new Vector2(_moveInput.normalized.x, 0);
+				//_lastSlideDir = _moveInput.x > 0 ? Vector2.right : Vector2.left;
+			//_lastDashDir = _moveInput;
 			else
-				//_lastDashDir = IsFacingRight ? Vector2.right : Vector2.left;
-				_lastDashDir = Vector2.up;
+				_lastDashDir = IsFacingRight ? Vector2.right : Vector2.left;
+				//_lastDashDir = Vector2.up;
 
 
 
@@ -367,7 +369,7 @@ public class PlayerMovement : MonoBehaviour
 			StartCoroutine(nameof(StartDash), _lastDashDir);
 		}
         #endregion
-
+		/*
         #region SLIDE CHECKS
         if (CanSlide() && LastPressedSlideTime > 0)
         {
@@ -391,6 +393,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(nameof(StartSlide), _lastSlideDir);
         }
         #endregion
+		*/
 
         #region Wall Climb CHECKS
         if (!slideStuck && CanWallClimb() && ((LastOnWallLeftTime > 0 && _moveInput.x < 0) || (LastOnWallRightTime > 0 && _moveInput.x > 0)))

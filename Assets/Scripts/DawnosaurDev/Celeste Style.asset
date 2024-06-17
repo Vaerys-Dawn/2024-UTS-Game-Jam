@@ -72,7 +72,7 @@ MonoBehaviour:
   coyoteTime: 0.1
   jumpInputBufferTime: 0.1
   dashAmount: 1
-  dashSpeed: 20
+  dashSpeed: 40
   dashSleepTime: 0.05
   dashAttackTime: 0.15
   dashEndTime: 0.15
