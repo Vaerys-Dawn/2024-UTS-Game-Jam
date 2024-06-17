@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5081526808494042793}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SlideCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 1692397178111865380}
   - component: {fileID: 2284435832396456380}
   - component: {fileID: 5618014619206976271}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6564427707406564091}
   - component: {fileID: 468917098589174872}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MoveCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 5475830501635166828}
   - component: {fileID: 454025227879575439}
   - component: {fileID: 1852255372169465517}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ParticleEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5346,7 +5346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5198632443238540589}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BackWallCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5377,7 +5377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369911975798920509}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FrontWallCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5408,7 +5408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 484690594953402851}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GroundCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5441,7 +5441,7 @@ GameObject:
   - component: {fileID: 3495012580984806488}
   - component: {fileID: 6900071752022047611}
   - component: {fileID: 8175774191106375973}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: AimCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5530,7 +5530,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

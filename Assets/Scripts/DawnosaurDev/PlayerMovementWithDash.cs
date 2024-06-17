@@ -143,6 +143,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CapsuleCollider2D defaultCollider;
 	[SerializeField] private CapsuleCollider2D slideCollider;
 
+	float extraSpeed = 0.0f;
+
 
 
     #endregion
@@ -163,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
  //   [SerializeField] private float _grappleVolumeMult = 1f;
 
     private bool slideStuck = false;
-
+    [SerializeField] private float speedPerPellet = 0.5f;
 
     private void Awake()
 	{
@@ -195,6 +197,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Update()
 	{
+		if (extraSpeed < 0.0f) { extraSpeed = 0.0f; }
 		Console.WriteLine("Hellow?>");
 
         #region TIMERS
@@ -658,7 +661,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (IsWindup || IsGrappling) return;
 		//Calculate the direction we want to move in and our desired velocity
-		float targetSpeed = _moveInput.x * Data.runMaxSpeed;
+		float targetSpeed = _moveInput.x * (Data.runMaxSpeed + extraSpeed);
 
 
         //We can reduce are control using Lerp() this smooths changes to are direction and speed
@@ -1008,6 +1011,16 @@ public class PlayerMovement : MonoBehaviour
 			return false;
 	}
     #endregion
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider == null) return;
+        if (!collider.CompareTag("Power")) return;
+        extraSpeed += speedPerPellet;
+
+        GameObject.Destroy(collider.gameObject);
+    }
+
 
 
     #region EDITOR METHODS
