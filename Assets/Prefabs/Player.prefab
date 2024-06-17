@@ -269,6 +269,7 @@ MonoBehaviour:
   _maxHealth: 30
   defaultCollider: {fileID: 2444024576683063050}
   slideCollider: {fileID: 2534822183685635847}
+  speedPerPellet: 0.5
 --- !u!114 &1034339816794493664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +377,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
