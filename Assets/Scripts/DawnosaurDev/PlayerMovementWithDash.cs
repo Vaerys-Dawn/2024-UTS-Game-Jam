@@ -102,6 +102,9 @@ public class PlayerMovement : MonoBehaviour
     public float JumpTestTime { get; private set; }
     public float JumpSoundCoolDown { get; private set; }
 
+	[SerializeField] ParticleSystem _dashParticles;
+    [SerializeField] ParticleSystem _runParticles;
+
     #endregion
 
     #region CHECK PARAMETERS
@@ -191,12 +194,17 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Start()
 	{
+		_dashParticles.gameObject.SetActive(false);
         SetGravityScale(Data.gravityScale);
 		IsFacingRight = true;
 	}
 
 	private void Update()
 	{
+		// run particles system
+		if (extraSpeed >= 10.0f) _runParticles.gameObject.SetActive(true);
+		else _runParticles.gameObject.SetActive(false);
+
 		if (extraSpeed < 0.0f) { extraSpeed = 0.0f; }
 		Console.WriteLine("Hellow?>");
 
@@ -349,6 +357,7 @@ public class PlayerMovement : MonoBehaviour
 		#region DASH CHECKS
 		if (!slideStuck && CanDash() && LastPressedSlideTime > 0 && !IsWallClimbing && !IsWallJumping)
 		{
+
 			//Freeze game for split second. Adds juiciness and a bit of forgiveness over directional input
 			Sleep(Data.dashSleepTime);
 
@@ -730,7 +739,9 @@ public class PlayerMovement : MonoBehaviour
 		transform.localScale = scale;
 
 		IsFacingRight = !IsFacingRight;
-	}
+        _dashParticles.transform.localScale = new Vector3(IsFacingRight ? 1 : -1, 1, 1);
+        _runParticles.transform.localScale = new Vector3(IsFacingRight ? 1 : -1, 1, 1);
+    }
     #endregion
 
     #region JUMP METHODS
@@ -785,14 +796,17 @@ public class PlayerMovement : MonoBehaviour
 	//Dash Coroutine
 	private IEnumerator StartDash(Vector2 dir)
 	{
-        //AudioManager.Instance.PlaySound("Dash", _dashVolumeMult);
-        //Overall this method of dashing aims to mimic Celeste, if you're looking for
-        // a more physics-based approach try a method similar to that used in the jump
+		//AudioManager.Instance.PlaySound("Dash", _dashVolumeMult);
+		//Overall this method of dashing aims to mimic Celeste, if you're looking for
+		// a more physics-based approach try a method similar to that used in the jump
+
+		extraSpeed -= 1.0f;
 
         LastOnGroundTime = 0;
 		LastPressedDashTime = 0;
+        _dashParticles.gameObject.SetActive(true);
 
-		float startTime = Time.time;
+        float startTime = Time.time;
 
 		_dashesLeft--;
 		_isDashAttacking = true;
@@ -820,9 +834,9 @@ public class PlayerMovement : MonoBehaviour
 		{
 			yield return null;
 		}
-
-		//Dash over
-		IsDashing = false;
+        _dashParticles.gameObject.SetActive(false);
+        //Dash over
+        IsDashing = false;
 	}
 
 	//Short period before the player is able to dash again
@@ -983,6 +997,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private bool CanDash()
 	{
+		if (extraSpeed < 1.0f) return false;
 		if (!_dashUnlocked) return false;
 		if (!IsDashing && _dashesLeft < Data.dashAmount && LastOnGroundTime > 0 && !_dashRefilling)
 		{
