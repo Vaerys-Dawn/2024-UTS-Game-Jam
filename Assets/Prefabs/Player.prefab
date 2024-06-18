@@ -272,7 +272,7 @@ MonoBehaviour:
   _maxHealth: 30
   defaultCollider: {fileID: 2444024576683063050}
   slideCollider: {fileID: 2534822183685635847}
-  speedPerPellet: 0.5
+  speedPerPellet: 1
 --- !u!114 &1034339816794493664
 MonoBehaviour:
   m_ObjectHideFlags: 0
