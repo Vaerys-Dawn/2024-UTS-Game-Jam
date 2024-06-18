@@ -477,16 +477,16 @@ public class PlayerMovement : MonoBehaviour
 
 
         animator.SetBool("IsMoving", Mathf.Abs(_moveInput.x) > 0.1f);
-		animator.SetBool("IsWallSliding", IsWallClimbing && !_wallClimbUnlocked);
-        animator.SetBool("IsWallClimbing", IsWallClimbing && _wallClimbUnlocked);
-		animator.SetBool("IsWallJumping", IsWallJumping);
-		animator.SetBool("IsSliding", IsSliding);
+		//animator.SetBool("IsWallSliding", IsWallClimbing && !_wallClimbUnlocked);
+        //animator.SetBool("IsWallClimbing", IsWallClimbing && _wallClimbUnlocked);
+		//animator.SetBool("IsWallJumping", IsWallJumping);
+		//animator.SetBool("IsSliding", IsSliding);
 		animator.SetBool("IsDashing", IsDashing);
 		animator.SetBool("Bonk", lastBonkTime > 0f);
 		animator.SetBool("IsJumpFalling", _isJumpFalling);
         animator.SetBool("IsFalling", RB.velocity.y < -0.01f && LastOnGroundTime < 0);
-		animator.SetBool("IsInteracting", IsInteracting);
-		animator.SetBool("SlideStuck", slideStuck);
+		//animator.SetBool("IsInteracting", IsInteracting);
+		//animator.SetBool("SlideStuck", slideStuck);
 		animator.SetFloat("ExtraSpeed", extraSpeed);
 		animator.SetLayerWeight(1, IFrames > 0 ? 0.5f : 0);
 		spriteRenderer.material = IFrames > 0 ? iFrameMaterial : baseMaterial;
