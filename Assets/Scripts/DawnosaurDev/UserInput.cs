@@ -102,6 +102,9 @@ public class UserInput : MonoBehaviour
         SpecialInput = _specialAction.WasPerformedThisFrame();
         InteractInput = _interactAction.WasPerformedThisFrame();
 
+        MenuInput = _menuAction.WasPerformedThisFrame();
+        MapInput = _mapAction.WasPerformedThisFrame();
+
         Vector2 location = _mouseAction.ReadValue<Vector2>();
 
         Vector2 mouseDirection = new Vector2(location.x - Screen.width / 2, location.y - Screen.height / 2).normalized;

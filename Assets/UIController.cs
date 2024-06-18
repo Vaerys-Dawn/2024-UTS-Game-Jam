@@ -15,9 +15,28 @@ public class UIController : Interactable
     private bool timerStopped;
 
     LevelLink link = null;
+    [SerializeField] private GameObject nextLevelScreen;
+
+
+    private void Start()
+    {
+        nextLevelScreen.SetActive(false);
+    }
 
     public override void InteractionUpdate()
     {
+        if (UserInput.instance.MenuInput)
+        {
+            Debug.Log("Escape Attempt");
+            Application.Quit();
+        }
+
+        if (UserInput.instance.MapInput)
+        {
+            Debug.Log("Toggle Fullscreen");
+            Screen.fullScreen = !Screen.fullScreen;
+        }
+
         if (timerStopped && UserInput.instance.JumpPressed)
         {
             timerStarted = false;
@@ -26,6 +45,9 @@ public class UIController : Interactable
             PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
             player.resetSpeed();
             link.SendState(this, true);
+            nextLevelScreen.SetActive(false);
+
+            //Time.timeScale = 1;
         }
 
         if (timerStopped) return;
@@ -50,5 +72,7 @@ public class UIController : Interactable
     internal void stopTimer()
     {
         timerStopped = true;
+        nextLevelScreen.SetActive(true);
+        //Time.timeScale = 0;
     }
 }
