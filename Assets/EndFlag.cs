@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class EndFlag : MonoBehaviour
 {
     // Start is called before the first frame update
-    UIController controller;
+    public UIController controller;
 
     void Start()
     {
@@ -15,7 +16,10 @@ public class EndFlag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controller == null) FindObjectOfType<UIController>();
+        if (controller == null)
+        {
+            controller = FindObjectOfType<UIController>();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
