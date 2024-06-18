@@ -228,7 +228,7 @@
                 {
                     "name": "",
                     "id": "dae9c271-b8b8-46e1-973e-89642e8de658",
-                    "path": "<Keyboard>/m",
+                    "path": "<Keyboard>/#(F)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -242,7 +242,7 @@
                     "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Gamepad",
                     "action": "Map",
                     "isComposite": false,
                     "isPartOfComposite": false
