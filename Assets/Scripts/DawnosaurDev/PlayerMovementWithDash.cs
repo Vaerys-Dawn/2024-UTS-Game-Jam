@@ -1129,6 +1129,11 @@ public class PlayerMovement : MonoBehaviour
     {
 		lastBonkTime = 0.5f;
     }
+
+    internal void resetSpeed()
+    {
+		extraSpeed = 0;
+    }
 }
 
 // created by Dawnosaur :D modified to hell and back by Erin Heathcote

@@ -15,7 +15,7 @@ public class EndFlag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (controller == null) FindObjectOfType<UIController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

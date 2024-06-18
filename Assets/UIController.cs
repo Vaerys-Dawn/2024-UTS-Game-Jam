@@ -20,6 +20,11 @@ public class UIController : Interactable
     {
         if (timerStopped && UserInput.instance.JumpPressed)
         {
+            timerStarted = false;
+            timerStopped = false;
+            overalTime = 0;
+            PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
+            player.resetSpeed();
             link.SendState(this, true);
         }
 
