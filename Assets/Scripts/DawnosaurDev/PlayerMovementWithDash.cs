@@ -169,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool slideStuck = false;
     [SerializeField] private float speedPerPellet = 0.5f;
+    private float lastBonkTime;
 
     private void Awake()
 	{
@@ -206,13 +207,13 @@ public class PlayerMovement : MonoBehaviour
 		else _runParticles.gameObject.SetActive(false);
 
 		if (extraSpeed < 0.0f) { extraSpeed = 0.0f; }
-		Console.WriteLine("Hellow?>");
 
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
 		LastOnWallTime -= Time.deltaTime;
 		LastOnWallRightTime -= Time.deltaTime;
 		LastOnWallLeftTime -= Time.deltaTime;
+		lastBonkTime -= Time.deltaTime;
 
 		LastPressedJumpTime -= Time.deltaTime;
 		LastPressedDashTime -= Time.deltaTime;
@@ -481,10 +482,12 @@ public class PlayerMovement : MonoBehaviour
 		animator.SetBool("IsWallJumping", IsWallJumping);
 		animator.SetBool("IsSliding", IsSliding);
 		animator.SetBool("IsDashing", IsDashing);
+		animator.SetBool("Bonk", lastBonkTime > 0f);
 		animator.SetBool("IsJumpFalling", _isJumpFalling);
         animator.SetBool("IsFalling", RB.velocity.y < -0.01f && LastOnGroundTime < 0);
 		animator.SetBool("IsInteracting", IsInteracting);
 		animator.SetBool("SlideStuck", slideStuck);
+		animator.SetFloat("ExtraSpeed", extraSpeed);
 		animator.SetLayerWeight(1, IFrames > 0 ? 0.5f : 0);
 		spriteRenderer.material = IFrames > 0 ? iFrameMaterial : baseMaterial;
 		if (Mathf.Abs(RB.velocity.y) < 0.01) animator.SetBool("Jumping", false);
@@ -1120,6 +1123,11 @@ public class PlayerMovement : MonoBehaviour
 		CurrentHealth += healAmount;
 		if (CurrentHealth > _maxHealth) CurrentHealth = _maxHealth;
        // if (pastHealth < CurrentHealth) AudioManager.Instance.PlaySound("Heal", _healSoundMult);
+    }
+
+    internal void playBonk()
+    {
+		lastBonkTime = 0.5f;
     }
 }
 

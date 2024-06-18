@@ -22,7 +22,11 @@ public class explodeWall : MonoBehaviour
             Vector3 direction = (player.transform.transform.position - this.transform.position).normalized;
         
             Debug.Log("Bonking Again");
-            if (!player.IsDashing) return;
+            if (!player.IsDashing)
+            {
+                player.playBonk();
+                return;
+            }
             Debug.Log("Bonking Again Again");
             Vector3 objTrans = Vector3.zero;
             Quaternion objRot = Quaternion.identity;
